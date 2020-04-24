@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="main.css">
+  <title>Week2 JS-SandyLin</title>
+</head>
+
+<body>
+  <nav>
+    <div class="content nav">
+      <h2>Week2 JS</h2>
+
+      <div class="menu-icon">
+          <i class="fas fa-bars" id="menuicon"></i>
+      </div>
+      <ul class="menu-nav">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+      </ul>
+    </div>
+    <div class="slidemenu" id="menu-side">
+      <li>item1</li>
+      <li>item2</li>
+      <li>item3</li>
+      <li>item4</li>
+      <div class="menu-icon">
+        <i class="fa fa-times" id="cross"></i>
+      </div>
+    </div>
+  </nav>
+
+  <div class="banner">
+    <h1 class="title" id = "hello-title" onclick="changeTitle()">Hello</h1>
+  </div>
+  <div class="search">
+    <input type="text" placeholder="Search.." name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </div>
+  <div>
+    <h2 class="subtitle">Section Title</h2>
+  </div>
+
+  <div class="content box">
+    <article>
+      <p>Content Box 1</p>
+    </article>
+    <article>
+      <p>Content Box 2</p>
+    </article>
+    <article>
+      <p>Content Box 3</p>
+    </article>
+    <article>
+      <p>Content Box 4</p>
+    </article>
+  </div>
+
+  <div class="callbutton" id="callToAction" onclick="addMore()">
+    Call to Action
+  </div>
+
+  <div class="content box" id="addMoreContent" style="display:none">
+    <article>
+      <p>Content Box 1</p>
+    </article>
+    <article>
+      <p>Content Box 2</p>
+    </article>
+    <article>
+      <p>Content Box 3</p>
+    </article>
+    <article>
+      <p>Content Box 4</p>
+    </article>
+  </div>
+  <footer>
+    <h3>Terms | Privacy</h3>
+    <p>This website is developed by SandyLin</p>
+</div>
+  </footer>
+  <script src="main.js"></script>
+  <script>
+    //Assignment 1: Function and Array
+    function max(numbers){
+      let max = 0;
+      for(let ix = 0; ix < numbers.length; ix++){
+        max = (numbers[ix] > max) ? numbers[ix] : max;
+      }
+      return max;
+    }
+
+    console.log(max([1, 2, 4, 5]));
+    console.log(max([5, 2, 7, 1, 6]));
+
+    //Assignment 2: Object
+      function calculate(args) {
+      let result;
+      if (args.op === "+") {
+        result = args.n1 + args.n2;
+      } else if (args.op === "-") {
+        result = args.n1 - args.n2;
+      } else {
+        result = "Not supported";
+      }
+      return result;
+    }
+
+    //first way
+    data = {
+      op: "+",
+      n1: 100,
+      n2: 1,
+    };
+
+    console.log(calculate(data));
+
+    //second way
+    class calculateObj {
+      constructor(operator, num1, num2) {
+        this.op = operator;
+        this.n1 = num1;
+        this.n2 = num2;
+      }
+    }
+
+    let obj = new calculateObj("+", 100, 1);
+    console.log(calculate(obj));
+
+    //Assignment 3: Function, Array, and Object
+    function avg(data) {
+      let total = 0;
+      let size = data.size;
+      for (let ix = 0; ix < size; ix++) {
+        total += data.products[ix].price;
+      }
+
+      return total / size;
+    }
+
+    console.log(
+      avg({
+        size: 3,
+        products: [
+          {
+            name: "Product 1",
+            price: 100,
+          },
+          {
+            name: "Product 2",
+            price: 700,
+          },
+          {
+            name: "Product 3",
+            price: 250,
+          },
+        ],
+      })
+    ); // show the average price of all products
+
+    //Assignment 5: Algorithm Practice (Advanced Optional)
+    function twoSum(nums, target) {
+      let map = {};
+      for (let ix = 0; ix < nums.length; ix++) {
+        let val = nums[ix];
+        if (map[target - val] >= 0) {
+          return [map[target - val], ix];
+        } else {
+          map[val] = ix;
+        }
+      }
+    }
+    console.log(twoSum([2, 7, 11, 15], 9));
+  </script>
+</body>
+
+</html>
