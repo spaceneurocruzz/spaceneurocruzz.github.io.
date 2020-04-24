@@ -12,9 +12,10 @@ nav {
 }
 
 article {
-  height: 150px;
+  height: 300px;
   margin-bottom: 30px;
   background-color: rgb(174, 217, 245);
+  overflow: auto;
 }
 
 footer {
@@ -24,6 +25,18 @@ footer {
   text-align: center;
   color: white;
   padding: 8px;
+}
+
+.articleTitle{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.codeSnippet{
+  white-space:pre;
+  text-align:left;
+  font-size: 14px;
+  background-color: rgb(234, 238, 241);
 }
 
 .content {
@@ -39,9 +52,12 @@ footer {
 }
 
 .banner {
-  background-color: rgb(180, 178, 175);
   margin-top: 0px;
   height: 200px;
+  background: linear-gradient(360deg, rgba(222, 200, 121, 1)22%, rgba(227, 109, 84, 0.8)60%);
+  background: -moz-linear-gradient(360deg, rgba(222, 200, 121, 1)22%, rgba(227, 109, 84, 0.8)60%);
+  background: -webkit-linear-gradient(360deg, rgba(222, 200, 121, 1)22%, rgba(227, 109, 84, 0.8)60%);
+  background: -o-linear-gradient(360deg, rgba(222, 200, 121, 1)22%, rgba(227, 109, 84, 0.8)60%);
 }
 
 .menu-icon {

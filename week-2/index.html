@@ -51,16 +51,82 @@
 
   <div class="content box">
     <article>
-      <p>Content Box 1</p>
+      <p class="articleTitle">Assignment 1: Function and Array</p>
+      <p class="codeSnippet">
+        function max(numbers){
+          let max = 0;
+          for(let ix = 0; ix < numbers.length; ix++){
+            max = (numbers[ix] > max) ? numbers[ix] : max;
+          }
+          return max;
+        }
+      </p>
     </article>
     <article>
-      <p>Content Box 2</p>
+      <p class="articleTitle">Assignment 2: Object</p>
+      <p class="codeSnippet">
+        function calculate(args) {
+          let result;
+          if (args.op === "+") {
+            result = args.n1 + args.n2;
+          } else if (args.op === "-") {
+            result = args.n1 - args.n2;
+          } else {
+            result = "Not supported";
+          }
+          return result;
+        }
+        //first way
+        data = {
+          op: "+",
+          n1: 100,
+          n2: 1,
+        };
+
+        console.log(calculate(data));
+
+        //second way
+        class calculateObj {
+          constructor(operator, num1, num2) {
+            this.op = operator;
+            this.n1 = num1;
+            this.n2 = num2;
+          }
+        }
+
+        let obj = new calculateObj("+", 100, 1);
+        console.log(calculate(obj));
+      </p>
     </article>
     <article>
-      <p>Content Box 3</p>
+      <p class="articleTitle">Assignment 3: Function, Array, and Object</p>
+      <p class="codeSnippet">
+        function avg(data) {
+          let total = 0;
+          let size = data.size;
+          for (let ix = 0; ix < size; ix++) {
+            total += data.products[ix].price;
+          }
+
+          return total / size;
+        }
+      </p>
     </article>
     <article>
-      <p>Content Box 4</p>
+      <p class="articleTitle">Assignment 5: Algorithm Practice</p>
+      <p class="codeSnippet">
+        function twoSum(nums, target) {
+          let map = {};
+          for (let ix = 0; ix < nums.length; ix++) {
+            let val = nums[ix];
+            if (map[target - val] >= 0) {
+              return [map[target - val], ix];
+            } else {
+              map[val] = ix;
+            }
+          }
+        }
+      </p>
     </article>
   </div>
 
@@ -70,16 +136,16 @@
 
   <div class="content box" id="addMoreContent" style="display:none">
     <article>
-      <p>Content Box 1</p>
+      <p class="articleTitle">Content Box 1</p>
     </article>
     <article>
-      <p>Content Box 2</p>
+      <p class="articleTitle">Content Box 2</p>
     </article>
     <article>
-      <p>Content Box 3</p>
+      <p class="articleTitle">Content Box 3</p>
     </article>
     <article>
-      <p>Content Box 4</p>
+      <p class="articleTitle">Content Box 4</p>
     </article>
   </div>
   <footer>
