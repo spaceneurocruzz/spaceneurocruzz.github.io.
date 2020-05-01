@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="sum.css">
+    <title>Week3 Node-SandyLin</title>
+</head>
+
+<body>
+    <div class="page-wrap">
+        <nav>
+            <div class="content nav">
+                <h2>Week3 WebServer</h2>
+            </div>
+        </nav>
+        <div class="container">
+            <h3>Assignment 1</h3>
+            <a href="http://localhost:3000/">http://localhost:3000/</a><br>
+        </div>
+        <div class="container">
+            <h3>Assignment 2</h3>
+            <a href="http://localhost:3000/getData">http://localhost:3000/getData</a><br>
+            <a href="http://localhost:3000/getData?number=xyz">http://localhost:3000/getData?number=xyz</a><br>
+            <a href="http://localhost:3000/getData?number=5">http://localhost:3000/getData?number=5</a><br>
+        </div>
+        <div class="container">
+            <h3>Assignment 3</h3>
+            <p>Calculate the sum from 1 to N: </p>
+            <input type="text" placeholder="Enter number N" id="input">
+            <button id="calc">Caluculate</button>
+            <button id="clearText" onclick="clearText()">Clear</button>
+            <div id="ajax">
+            </div>
+        </div>
+        <div class="container">
+            <h3>Assignment 4</h3>
+            <p>HTTP Cookies:</p>
+            <a href="http://localhost:3000/myName">http://localhost:3000/myName</a><br>
+            <a href="http://localhost:3000/trackName?name=123">http://localhost:3000/trackName?name=123</a><br>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <h3>Terms | Privacy</h3>
+        <p>This website is developed by SandyLin</p>
+    </footer>
+    <script>
+        var btn = document.getElementById('calc');
+        btn.addEventListener('click', () => {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    document.getElementById('ajax').innerHTML = `Result: ${xhr.responseText}`;
+                }
+            };
+            var reqVal = document.getElementById('input').value;
+            xhr.open('GET', `/getData?number=${reqVal}`);
+            xhr.send();
+        })
+
+        function clearText() {
+            document.getElementById('input').value = "";
+            document.getElementById('ajax').innerHTML = "";
+        }
+    </script>
+</body>
+
+</html>
