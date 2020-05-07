@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Products</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <h1 class="title">Products</h1>
+  <table id="productTable"></table>
+  <script src="./callback.js"></script>
+  <script>
+    function ajax(src, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText)
+            callback(data);
+          }
+        }
+      }
+      xhr.open('GET', src);
+      xhr.send();
+    }
+
+    function render(data) {
+      var table = document.getElementById('productTable');
+      var tableBody = document.createElement("tbody");
+      var titleRow = document.createElement("tr");
+      var titleCol = document.createElement("th");
+      var titleColText = document.createTextNode("ID");
+      titleCol.appendChild(titleColText);
+      titleRow.appendChild(titleCol);
+      tableBody.appendChild(titleRow);
+
+      for (let ix = 0; ix < data.length; ix++) {
+        var titleCol = document.createElement("th");
+        var titleColText = document.createTextNode(Object.keys(data[0])[ix]);
+        titleCol.appendChild(titleColText);
+        titleRow.appendChild(titleCol);
+        tableBody.appendChild(titleRow);
+      }
+
+      for (let ix = 0; ix < data.length; ix++) {
+        var row = document.createElement("tr");
+        var col = document.createElement("td");
+        var colText = document.createTextNode(ix + 1);
+        col.appendChild(colText);
+        row.appendChild(col);
+
+        for (let item in data[ix]) {
+          var col = document.createElement("td");
+          var colText = document.createTextNode(data[ix][item]);
+          col.appendChild(colText);
+          row.appendChild(col);
+        }
+
+        tableBody.appendChild(row);
+      }
+      table.appendChild(tableBody);
+    }
+
+    ajax("https://cwpeng.github.io/live-records-samples/data/products.json", function (response) {
+      // ajax("./data.json", function (response) {
+      render(response);
+    }) // you should get product information in JSON format and render data in the page
+
+  </script>
+</body>
+
+</html>
