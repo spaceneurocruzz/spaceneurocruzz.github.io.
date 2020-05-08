@@ -40,7 +40,7 @@ const Banner = (props) => {
   return (
     <div className="banner">
       <h1 className="title" id="hello-title" onClick={props.changeTitle}>
-        {props.title}
+        {props.bannerTitle ? "Hello" : "Have a Good Time!"}
       </h1>
     </div>
   );
@@ -94,7 +94,7 @@ const Footer = () => {
 
 class App extends React.Component {
   state = {
-    title: true,
+    bannerTitle: true,
     showContent: false,
     visible: false,
     article: [
@@ -105,13 +105,9 @@ class App extends React.Component {
     ],
   };
 
-  title = () => {
-    return this.state.title ? "Hello" : "Have a Good Time!";
-  };
-
   changeTitle = () => {
     this.setState((prevState) => ({
-      title: !prevState.title,
+      bannerTitle: !prevState.bannerTitle,
     }));
   };
 
@@ -131,7 +127,10 @@ class App extends React.Component {
     return (
       <div>
         <Nav toggleMenu={this.toggleMenu} visible={this.state.visible} />
-        <Banner title={this.title()} changeTitle={this.changeTitle} />
+        <Banner
+          changeTitle={this.changeTitle}
+          bannerTitle={this.state.bannerTitle}
+        />
         <div className="content box">
           {this.state.article.map((article) => (
             <Article title={article.title} key={article.id} />
